@@ -47,7 +47,7 @@ public class Enlace {
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO Ciudad (nombre, poblacion) "
+            String data = String.format("INSERT INTO Ciudad (nombre, poblacion) "  // Ciudad es el nombre de la tabla que esta en la base de datos0
                     + "values ('%s', %d)", ciudad.obtenerNombre(), 
                     ciudad.obtenerPoblacion());
             statement.executeUpdate(data);
@@ -68,6 +68,9 @@ public class Enlace {
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
+                /*
+                se se obtiene la cadena "getString" y Poblacion "getInt"
+                */
                 Ciudad miCiudad = new Ciudad(rs.getString("nombre"),
                 rs.getInt("poblacion"));
                 lista.add(miCiudad);
